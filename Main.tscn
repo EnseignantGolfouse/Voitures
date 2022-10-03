@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/voiture_bleue.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/voiture_rouge.png" type="Texture" id=3]
+[ext_resource path="res://Position.gd" type="Script" id=4]
+[ext_resource path="res://IndicateurBleu.gd" type="Script" id=5]
+[ext_resource path="res://IndicateurRouge.gd" type="Script" id=6]
+[ext_resource path="res://assets/themes/DefaultTheme.tres" type="Theme" id=7]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VoitureRouge" type="Sprite" parent="."]
+position = Vector2( 231, 152 )
+scale = Vector2( 0.083423, 0.0772223 )
+texture = ExtResource( 3 )
+
+[node name="VoitureBleue" type="Sprite" parent="."]
+position = Vector2( 238, 282 )
+scale = Vector2( 0.29, 0.29375 )
+texture = ExtResource( 2 )
+
+[node name="Demarre" type="Button" parent="."]
+margin_right = 73.0
+margin_bottom = 20.0
+theme = ExtResource( 7 )
+text = "DÉMARRE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Button" parent="."]
+margin_left = 115.0
+margin_right = 193.0
+margin_bottom = 30.0
+theme = ExtResource( 7 )
+text = "PAUSE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reinitialise" type="Button" parent="."]
+margin_left = 2.0
+margin_top = 32.0
+margin_right = 143.0
+margin_bottom = 62.0
+theme = ExtResource( 7 )
+text = "RÉINITIALISE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Position" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="IndicateurRouge" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="IndicateurBleu" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[connection signal="resized" from="." to="." method="_on_Main_resized"]
+[connection signal="pressed" from="Demarre" to="." method="_on_Demarre_pressed"]
+[connection signal="pressed" from="Pause" to="." method="_on_Pause_pressed"]
+[connection signal="pressed" from="Reinitialise" to="." method="_on_Reinitialise_pressed"]
